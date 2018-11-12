@@ -5,7 +5,7 @@ https://forums.juniper.net/t5/Automation/OpenConfig-and-gRPC-Junos-Telemetry-Int
 
 # Install jtimon (docker container) 
 
-## let's build a jtimon Docker image 
+## Build a jtimon Docker image 
 
 ```
 # git clone https://github.com/nileshsimaria/jtimon.git
@@ -51,15 +51,15 @@ Usage of /usr/local/bin/jtimon:
 ```
 Alternatively, run this command 
 ```
-docker run -it --rm jtimon --help
+# docker run -it --rm jtimon --help
 ```
 
 # create a jtimon configuration file
 ```
-vi vmx1.json
+# vi vmx1.json
 ```
 ```
-more vmx1.json
+# more vmx1.json
 {
     "host": "172.30.52.155",
     "port": 50051,
@@ -85,20 +85,19 @@ more vmx1.json
 }
 ```
 
-# Pass to the container the jtimon configuration file 
+# Pass the jtimon configuration file to the container
 
 lets run jtimon dockerized while passing the local directory to the container to access the configuration file.  
-
 
 run jtimon with the configuration file ```vmx1.json``` and Print Telemetry data
  
 ```
-./jtimon --config vmx1.json --print
+# ./jtimon --config vmx1.json --print
 ```
 Alternatively, run this command 
 
 ```
-docker run -it --rm -v $PWD:/u jtimon --config vmx2.json --print
+# docker run -it --rm -v $PWD:/u jtimon --config vmx1.json --print
 ```
 # Junos device details 
 Here's the junos details for the device 172.30.52.155 (```vmx1.json``` jtimon configuration file)
