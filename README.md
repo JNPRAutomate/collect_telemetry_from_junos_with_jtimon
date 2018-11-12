@@ -297,5 +297,8 @@ ResultSet({'(u'measurements', None)': [{u'name': u'm'}]})
 ```
 query data from a particular measurement and database
 ```
->>> influx_client.query('select * from "m"  order by desc limit 5 ', database='db')
+>>> gp = influx_client.query('select * from "m"  order by desc limit 5 ', database='db').get_points()
+>>> for item in gp:
+...    print item
+...
 ```
