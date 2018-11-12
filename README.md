@@ -22,7 +22,7 @@ There is no container running
 ```
 # docker ps | grep jtimon
 ```
-## run the image 
+## run jtimon 
 ```
 # ./jtimon --help
 Usage of /usr/local/bin/jtimon:
