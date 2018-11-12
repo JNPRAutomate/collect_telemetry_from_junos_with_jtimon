@@ -6,7 +6,6 @@ The data collected will be also stored in influxdb.
 We will use influxdb cli and a python library to query influxb data.   
 
 # Junos device details 
-Here's the junos details 
 
 ## Junos version
 ```
@@ -35,21 +34,23 @@ lab@jedi-vmx-1-vcp> show agent sensors
 ```
 
 
-# About jtimon
+# jtimon
+
+## About jtimon
+
 https://github.com/nileshsimaria/jtimon  
 https://forums.juniper.net/t5/Automation/OpenConfig-and-gRPC-Junos-Telemetry-Interface/ta-p/316090  
 
+## Install jtimon (docker container) 
 
-# Install jtimon (docker container) 
-
-## Build a jtimon Docker image 
+### Build a jtimon Docker image 
 
 ```
 # git clone https://github.com/nileshsimaria/jtimon.git
 # cd jtimon/
 # make docker
 ```
-## check the image
+### check the image
 ```
 # docker images jtimon
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
@@ -59,7 +60,7 @@ There is no container running
 ```
 # docker ps | grep jtimon
 ```
-# Run jtimon 
+## Run jtimon 
 ```
 # ./jtimon --help
 Usage of /usr/local/bin/jtimon:
@@ -91,7 +92,7 @@ Alternatively, run this command
 # docker run -it --rm jtimon --help
 ```
 
-# create a jtimon configuration file
+## create a jtimon configuration file
 ```
 # vi vmx1.json
 ```
@@ -122,7 +123,7 @@ Alternatively, run this command
 }
 ```
 
-# Pass the jtimon configuration file to the container
+## Pass the jtimon configuration file to the container
 
 lets run jtimon dockerized while passing the local directory to the container to access the configuration file.  
 
