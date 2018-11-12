@@ -22,7 +22,7 @@ There is no container running
 ```
 # docker ps | grep jtimon
 ```
-## run jtimon 
+# Run jtimon 
 ```
 # ./jtimon --help
 Usage of /usr/local/bin/jtimon:
@@ -54,10 +54,7 @@ Alternatively, run this command
 docker run -it --rm jtimon --help
 ```
 
-lets run jtimon dockerized while passing the local directory to the container to access the configuration file.  
-
-
-create a jtimon configuration file
+# create a jtimon configuration file
 ```
 vi vmx1.json
 ```
@@ -87,6 +84,11 @@ more vmx1.json
     }]
 }
 ```
+
+# Pass to the container the jtimon configuration file 
+
+lets run jtimon dockerized while passing the local directory to the container to access the configuration file.  
+
 
 run jtimon with the configuration file ```vmx1.json``` and Print Telemetry data
  
