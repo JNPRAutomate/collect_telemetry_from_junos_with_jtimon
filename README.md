@@ -126,3 +126,167 @@ set system services netconf ssh
 ```
 lab@jedi-vmx-1-vcp> show agent sensors
 ```
+
+
+# influxdb 
+
+InfluxDB is an open source time series database written in GO. 
+
+## install influxbd 
+
+download influxdb
+```
+wget https://dl.influxdata.com/influxdb/releases/influxdb_1.7.0_amd64.deb
+```
+Install influxdb
+```
+sudo dpkg -i influxdb_1.7.0_amd64.deb
+```
+start influxdb
+```
+service influxdb start
+```
+Verify
+```
+service influxdb status
+```
+
+
+## jtimon and influxbd
+create a jti configuration file that uses influxdb
+```
+# more vmx2.json
+{
+    "host": "172.30.52.155",
+    "port": 50051,
+    "user": "lab",
+    "password": "m0naco",
+    "cid": "my-client-id2",
+    "grpc" : {
+        "ws" : 524288
+    },
+    "paths": [{
+        "path": "/interfaces",
+        "freq": 2000
+    }, {
+        "path": "/junos/system/linecard/cpu/memory/",
+        "freq": 1000
+    }, {
+        "path": "/bgp",
+        "freq": 10000
+    }, {
+        "path": "/components",
+        "freq": 10000
+    }],
+    "influx": {
+        "server": "172.30.52.37",
+        "port": 8086,
+        "dbname": "db",
+        "user": "influx",
+        "password": "influxdb",
+        "recreate": true,
+        "measurement": "m"
+}
+
+```
+
+start an influxdb cli session and create a user
+```
+# influx
+Connected to http://localhost:8086 version 1.7.0
+InfluxDB shell version: 1.7.0
+Enter an InfluxQL query
+>  CREATE USER "influx" WITH PASSWORD 'influxdb'
+> show users
+user   admin
+----   -----
+influx false
+> exit
+# 
+```
+run jtimon with this configuration file
+```
+# ./jtimon --config vmx2.json --print
+```
+
+## query data from Influxdb using CLI 
+start an influxdb cli session
+```
+# influx
+Connected to http://localhost:8086 version 1.7.0
+InfluxDB shell version: 1.7.0
+Enter an InfluxQL query
+```
+To list the databases, run this command.
+```
+> show databases
+name: databases
+name
+----
+_internal
+db
+```
+To use the database ```db```, run this command
+
+```
+> use db
+Using database db
+```
+Run this command to list measurements
+```
+> show measurements
+name: measurements
+name
+----
+m
+```
+```
+> select * from m order by desc limit 10
+```
+exit influxdb db
+```
+> exit
+# 
+```
+
+## query data from Influxdb using python
+
+install the influxdb python library.
+This python library is a client for interacting with InfluxDB.
+```
+pip install influxdb
+```
+Verify
+```
+pip list | grep influx
+```
+
+run this command to start a python interactive session  
+```
+# python
+```
+connect to InfluxDB using Python.
+```
+>>> from influxdb import InfluxDBClient
+>>> influx_client = InfluxDBClient('localhost',8086)
+```
+list the databases
+```
+>>> influx_client.query('show databases')
+ResultSet({'(u'databases', None)': [{u'name': u'_internal'}, {u'name': u'db'}]})
+>>> gp=influx_client.query('show databases').get_points()
+>>> for item in gp:
+...    print item
+...
+{u'name': u'_internal'}
+{u'name': u'db'}
+```
+list measurements for a database
+```
+>>> influx_client.query('show measurements', database='db')
+ResultSet({'(u'measurements', None)': [{u'name': u'm'}]})
+```
+query data from a particular measurement and database
+```
+>>> influx_client.query('select * from "m"  order by desc limit 5 ', database='db')
+```
