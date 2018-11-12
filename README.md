@@ -1,3 +1,40 @@
+# About this repository
+
+We will use jtimon to collect openconfig telemetry from junos devices.  
+The data collected will be printed.  
+The data collected will be also stored in influxdb.  
+We will use influxdb cli and a python library to query influxb data.   
+
+# Junos device details 
+Here's the junos details 
+
+## Junos version
+```
+lab@jedi-vmx-1-vcp> show version | match telemetry
+JUNOS na telemetry [17.2R1-S2.1-C1]
+```
+```
+lab@jedi-vmx-1-vcp> show version | match openconfig
+JUNOS Openconfig [0.0.0.9]
+```
+## Junos configuration 
+```
+lab@jedi-vmx-1-vcp> show configuration system services extension-service | display set
+set system services extension-service request-response grpc clear-text port 50051
+set system services extension-service request-response grpc skip-authentication
+set system services extension-service notification allow-clients address 0.0.0.0/0
+```
+```
+lab@jedi-vmx-1-vcp> show configuration system services netconf | display set
+set system services netconf ssh
+```
+## Display information about sensors
+to Display information about sensors, run this command: 
+```
+lab@jedi-vmx-1-vcp> show agent sensors
+```
+
+
 # About jtimon
 https://github.com/nileshsimaria/jtimon  
 https://forums.juniper.net/t5/Automation/OpenConfig-and-gRPC-Junos-Telemetry-Interface/ta-p/316090  
@@ -99,35 +136,6 @@ Alternatively, run this command
 ```
 # docker run -it --rm -v $PWD:/u jtimon --config vmx1.json --print
 ```
-# Junos device details 
-Here's the junos details 
-
-## Junos version
-```
-lab@jedi-vmx-1-vcp> show version | match telemetry
-JUNOS na telemetry [17.2R1-S2.1-C1]
-```
-```
-lab@jedi-vmx-1-vcp> show version | match openconfig
-JUNOS Openconfig [0.0.0.9]
-```
-## Junos configuration 
-```
-lab@jedi-vmx-1-vcp> show configuration system services extension-service | display set
-set system services extension-service request-response grpc clear-text port 50051
-set system services extension-service request-response grpc skip-authentication
-set system services extension-service notification allow-clients address 0.0.0.0/0
-```
-```
-lab@jedi-vmx-1-vcp> show configuration system services netconf | display set
-set system services netconf ssh
-```
-## Display information about sensors
-```
-lab@jedi-vmx-1-vcp> show agent sensors
-```
-
-
 # influxdb 
 
 InfluxDB is an open source time series database written in GO. 
