@@ -100,7 +100,7 @@ Alternatively, run this command
 # docker run -it --rm -v $PWD:/u jtimon --config vmx1.json --print
 ```
 # Junos device details 
-Here's the junos details for the device 172.30.52.155 (```vmx1.json``` jtimon configuration file)
+Here's the junos details 
 
 ## Junos version
 ```
@@ -157,7 +157,7 @@ create a jti configuration file that uses influxdb
 ```
 # more vmx2.json
 {
-    "host": "172.30.52.155",
+    "host": "172.30.52.156",
     "port": 50051,
     "user": "lab",
     "password": "m0naco",
@@ -243,7 +243,7 @@ m
 ```
 > select * from m order by desc limit 10
 ```
-exit influxdb db
+exit influxdb cli
 ```
 > exit
 # 
