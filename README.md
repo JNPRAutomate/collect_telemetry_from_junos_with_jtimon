@@ -33,7 +33,6 @@ to Display information about sensors, run this command:
 lab@jedi-vmx-1-vcp> show agent sensors
 ```
 
-
 # jtimon
 
 ## About jtimon
@@ -42,6 +41,9 @@ https://github.com/nileshsimaria/jtimon
 https://forums.juniper.net/t5/Automation/OpenConfig-and-gRPC-Junos-Telemetry-Interface/ta-p/316090  
 
 ## Install jtimon (docker container) 
+
+### requirements
+Install Docker
 
 ### Build a jtimon Docker image 
 
