@@ -146,19 +146,19 @@ InfluxDB is an open source time series database written in GO.
 
 download influxdb
 ```
-wget https://dl.influxdata.com/influxdb/releases/influxdb_1.7.0_amd64.deb
+# wget https://dl.influxdata.com/influxdb/releases/influxdb_1.7.0_amd64.deb
 ```
 Install influxdb
 ```
-sudo dpkg -i influxdb_1.7.0_amd64.deb
+# sudo dpkg -i influxdb_1.7.0_amd64.deb
 ```
 start influxdb
 ```
-service influxdb start
+# service influxdb start
 ```
 Verify
 ```
-service influxdb status
+# service influxdb status
 ```
 
 
@@ -264,11 +264,11 @@ exit influxdb cli
 install the influxdb python library.
 This python library is a client for interacting with InfluxDB.
 ```
-pip install influxdb
+# pip install influxdb
 ```
 Verify
 ```
-pip list | grep influx
+# pip list | grep influx
 ```
 
 run this command to start a python interactive session  
