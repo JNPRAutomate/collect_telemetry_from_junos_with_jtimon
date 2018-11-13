@@ -56,6 +56,7 @@ https://forums.juniper.net/t5/Automation/OpenConfig-and-gRPC-Junos-Telemetry-Int
 REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
 jtimon              latest              2e8967d4ea00        2 hours ago         16.4 MB
 ```
+### List running containers 
 There is no container running
 ```
 # docker ps | grep jtimon
@@ -87,7 +88,7 @@ Usage of /usr/local/bin/jtimon:
       --version                    Print version and build-time of the binary and exit
 
 ```
-Alternatively, run this command 
+Alternatively, run this command. These 2 commands are equivalents. 
 ```
 # docker run -it --rm jtimon --help
 ```
@@ -132,7 +133,7 @@ run jtimon with the configuration file ```vmx1.json``` and Print Telemetry data
 ```
 # ./jtimon --config vmx1.json --print
 ```
-Alternatively, run this command 
+Alternatively, run this command. These 2 commands are equivalents. 
 
 ```
 # docker run -it --rm -v $PWD:/u jtimon --config vmx1.json --print
