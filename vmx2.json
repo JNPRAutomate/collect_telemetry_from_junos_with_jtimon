@@ -14,9 +14,6 @@
         "path": "/junos/system/linecard/cpu/memory/",
         "freq": 1000
     }, {
-        "path": "/bgp",
-        "freq": 10000
-    }, {
         "path": "/components",
         "freq": 10000
     }],
