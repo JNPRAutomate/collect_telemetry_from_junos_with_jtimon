@@ -96,34 +96,9 @@ Alternatively, run this command. These 2 commands are equivalents.
 ```
 
 ## create a jtimon configuration file
+[use this file](vmx1.json)
 ```
 # vi vmx1.json
-```
-```
-# more vmx1.json
-{
-    "host": "172.30.52.155",
-    "port": 50051,
-    "user": "lab",
-    "password": "m0naco",
-    "cid": "my-client-id",
-    "grpc" : {
-        "ws" : 524288
-    },
-    "paths": [{
-        "path": "/interfaces",
-        "freq": 2000
-    }, {
-        "path": "/junos/system/linecard/cpu/memory/",
-        "freq": 1000
-    }, {
-        "path": "/bgp",
-        "freq": 10000
-    }, {
-        "path": "/components",
-        "freq": 10000
-    }]
-}
 ```
 
 ## Pass the jtimon configuration file to the container
@@ -165,42 +140,10 @@ Verify
 
 
 ## jtimon and influxbd
-create a jti configuration file that uses influxdb
+create a jti configuration file that uses influxdb  
+[use this file](vmx2.json)
 ```
-# more vmx2.json
-{
-    "host": "172.30.52.156",
-    "port": 50051,
-    "user": "lab",
-    "password": "m0naco",
-    "cid": "my-client-id2",
-    "grpc" : {
-        "ws" : 524288
-    },
-    "paths": [{
-        "path": "/interfaces",
-        "freq": 2000
-    }, {
-        "path": "/junos/system/linecard/cpu/memory/",
-        "freq": 1000
-    }, {
-        "path": "/bgp",
-        "freq": 10000
-    }, {
-        "path": "/components",
-        "freq": 10000
-    }],
-    "influx": {
-        "server": "172.30.52.37",
-        "port": 8086,
-        "dbname": "db",
-        "user": "influx",
-        "password": "influxdb",
-        "recreate": true,
-        "measurement": "m"
-    }
-}
-
+# vi vmx2.json
 ```
 
 start an influxdb cli session and create a user
