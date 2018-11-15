@@ -198,6 +198,7 @@ create a jti configuration file that uses influxdb
         "password": "influxdb",
         "recreate": true,
         "measurement": "m"
+    }
 }
 
 ```
