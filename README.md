@@ -244,8 +244,22 @@ ResultSet({'(u'measurements', None)': [{u'name': u'm'}]})
 ```
 query data from a particular measurement and database
 ```
+```
 >>> gp = influx_client.query('select * from "m"  order by desc limit 5 ', database='db').get_points()
 >>> for item in gp:
-...    print item
+...     print item['/interfaces/interface/@name']
+...     print item['/interfaces/interface/subinterfaces/subinterface/state/counters/in-octets']
 ...
+ge-0/0/7
+36
+ge-0/0/6
+28442436
+ge-0/0/2
+61735489
+ge-0/0/1
+16248
+ge-0/0/7
+None
+>>>
+
 ```
