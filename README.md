@@ -37,6 +37,9 @@ lab@jedi-vmx-1-vcp> show agent sensors
 
 ## About jtimon
 
+jtimon a grpc client.  
+you can use it to collect telemetry on junos devices.  
+it is opensourced and written in GO  
 https://github.com/nileshsimaria/jtimon  
 https://forums.juniper.net/t5/Automation/OpenConfig-and-gRPC-Junos-Telemetry-Interface/ta-p/316090  
 
